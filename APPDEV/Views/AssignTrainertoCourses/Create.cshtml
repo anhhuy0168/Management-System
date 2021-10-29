@@ -1,0 +1,30 @@
+﻿@model APPDEV.Viewmodels.AssignTrainerCourse.AssignTrainerToCourseViewModels
+@{
+    ViewBag.Title = "Add Trainer";
+}
+
+<div class="page-header">
+    <h2 style="margin-bottom: 15px">Add Trainer</h2>
+</div>
+
+@using (@Html.BeginForm("Create", "AssignTrainerToCourses", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger", @style = "margin-bottom:28px;" })
+
+    <div class="form-group">
+        <label>Course</label>
+        @Html.DropDownListFor(m => m.CourseId,
+        new SelectList(Model.Courses, "CourseID", "Name"),
+        new { @class = "form-control" }
+        )
+    </div>
+
+    <div class="form-group">
+        <label>Trainee</label>
+        @Html.DropDownListFor(m => m.TrainerId,
+       new SelectList(Model.Trainers, "TrainerId", "FullName"),
+       new { @class = "form-control" }
+       )
+    </div>
+    <button type="submit" class="btn btn-primary">Add Trainer</button>
+}

@@ -283,6 +283,7 @@
     <Content Include="Views\Staffs\CreateTraineeAccount.cshtml" />
     <Content Include="Views\Staffs\EditTraineeAccount.cshtml" />
     <Content Include="Views\AssignTrainertoCourses\Index.cshtml" />
+    <Content Include="Views\AssignTrainertoCourses\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
