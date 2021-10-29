@@ -1,0 +1,28 @@
+﻿@model APPDEV.Models.Trainee
+@{
+    ViewBag.Title = "Index";
+}
+<div class="page-header">
+    <h2 style="margin-bottom: 15px">My Profile</h2>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Date Of Birth</th>
+            <th scope="col">Education</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.FullName</td>
+            <td>@Model.Age</td>
+            <td>@Model.DateOfBirth</td>
+            <td>@Model.Education</td>
+
+        </tr>
+
+    </tbody>
+</table>

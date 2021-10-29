@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffsController.cs" />
+    <Compile Include="Controllers\TraineesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -296,6 +297,7 @@
     <Content Include="Views\AssignTraineeToCourses\Index.cshtml" />
     <Content Include="Views\AssignTraineeToCourses\Create.cshtml" />
     <Content Include="Views\AssignTraineeToCourses\Remove.cshtml" />
+    <Content Include="Views\Trainees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
