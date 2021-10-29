@@ -205,6 +205,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Role.cs" />
     <Compile Include="Viewmodels\CourseCategoriesViewModels.cs" />
+    <Compile Include="Viewmodels\CreateStaffViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -268,10 +269,12 @@
     <Content Include="Views\Courses\CourseIndex.cshtml" />
     <Content Include="Views\Courses\CourseCreate.cshtml" />
     <Content Include="Views\Courses\CourseEdit.cshtml" />
+    <Content Include="Views\Admins\IndexStaff.cshtml" />
+    <Content Include="Views\Admins\IndexTrainer.cshtml" />
+    <Content Include="Views\Admins\CreateStaffAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admins\" />
     <Folder Include="Views\CourseCategoriesControlle\" />
   </ItemGroup>
   <ItemGroup>

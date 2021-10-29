@@ -50,8 +50,54 @@ namespace APPDEV.Controllers
 
             return View(staff);
         }
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public ActionResult CreateStaffAccount()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public async Task<ActionResult> CreateStaffAccount(CreateStaffViewModels viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                { UserName = viewModel.RegisterViewModels.Email, Email = viewModel.RegisterViewModels.Email };
+                var result = await UserManager.CreateAsync(user, viewModel.RegisterViewModels.Password);
+                var staffId = user.Id;
+                var newStaff = new Staff()
+                {
+                    StaffId = staffId,
+                    FullName = viewModel.Staffs.FullName,
+                    Age = viewModel.Staffs.Age,
+                    Address = viewModel.Staffs.Address,
+                };
+
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, "staff");
+                    _context.Staffs.Add(newStaff);
+                    _context.SaveChanges();
+                }
+                AddErrors(result);
+            }
+
+            return RedirectToAction("IndexStaff", "Admins");
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
 
        
+
+
 
         /// <summary>
         /// FOR TRAINER
