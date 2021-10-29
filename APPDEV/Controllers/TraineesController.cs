@@ -24,5 +24,17 @@ namespace APPDEV.Controllers
                 .SingleOrDefault(t => t.TraineeId == userId);
             return View(traineeInDb);
         }
+        [HttpGet]
+        public ActionResult Courses()
+        {
+            var userId = User.Identity.GetUserId();
+            var category = _context.CourseCategories.ToList();
+
+            var courses = _context.TraineesToCourses
+                .Where(t => t.Trainee.TraineeId == userId)
+                .Select(t => t.Course)
+                .ToList();
+            return View(courses);
+        }
     }
 }
