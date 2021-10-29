@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\AssignTraineeToCoursesController.cs" />
     <Compile Include="Controllers\AssignTrainertoCoursesController.cs" />
     <Compile Include="Controllers\CourseCategoriesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
@@ -187,9 +188,14 @@
     <Compile Include="Migrations\202110290935587_AssignTrainerToCourse.Designer.cs">
       <DependentUpon>202110290935587_AssignTrainerToCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110291204585_AssignTraineeToCourse.cs" />
+    <Compile Include="Migrations\202110291204585_AssignTraineeToCourse.Designer.cs">
+      <DependentUpon>202110291204585_AssignTraineeToCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\AssignTraineeToCourse.cs" />
     <Compile Include="Models\AssignTrainerToCourse.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCategory.cs" />
@@ -201,6 +207,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Role.cs" />
+    <Compile Include="Viewmodels\AssignTraineeCourse\AssignTraineeToCourseViewModels.cs" />
+    <Compile Include="Viewmodels\AssignTraineeCourse\AssignTraineeInCourseViewModels.cs" />
     <Compile Include="Viewmodels\AssignTrainerCourse\AssignTrainerInCourseViewModels.cs" />
     <Compile Include="Viewmodels\AssignTrainerCourse\AssignTrainerToCourseViewModels.cs" />
     <Compile Include="Viewmodels\ChangePasswordViewModels.cs" />
@@ -285,6 +293,7 @@
     <Content Include="Views\AssignTrainertoCourses\Index.cshtml" />
     <Content Include="Views\AssignTrainertoCourses\Create.cshtml" />
     <Content Include="Views\AssignTrainertoCourses\Remove.cshtml" />
+    <Content Include="Views\AssignTraineeToCourses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110290935587_AssignTrainerToCourse.resx">
       <DependentUpon>202110290935587_AssignTrainerToCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110291204585_AssignTraineeToCourse.resx">
+      <DependentUpon>202110291204585_AssignTraineeToCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
