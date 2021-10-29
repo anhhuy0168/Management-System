@@ -170,7 +170,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
-    <Compile Include="Controllers\AssignTrainerToCousesController.cs" />
     <Compile Include="Controllers\CourseCategoriesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -202,6 +201,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\AssignTrainerToCourse.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -212,6 +212,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Role.cs" />
+    <Compile Include="Viewmodels\AssignTrainerCourse\AssignTrainerInCourseViewModels.cs" />
     <Compile Include="Viewmodels\ChangePasswordViewModels.cs" />
     <Compile Include="Viewmodels\CourseCategoriesViewModels.cs" />
     <Compile Include="Viewmodels\CreateStaffViewModels.cs" />
