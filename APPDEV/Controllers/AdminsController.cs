@@ -94,8 +94,90 @@ namespace APPDEV.Controllers
                 ModelState.AddModelError("", error);
             }
         }
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public ActionResult EditStaffAccount(string id)
+        {
+            var staffInDb = _context.Staffs.SingleOrDefault(u => u.StaffId == id);
+            if (staffInDb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(staffInDb);
+        }
 
-       
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public ActionResult EditStaffAccount(Staff staff)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(staff);
+            }
+            var staffInfoInDb = _context.Staffs.SingleOrDefault(t => t.StaffId == staff.StaffId);
+
+            if (staffInfoInDb == null)
+            {
+                return HttpNotFound();
+            }
+            staffInfoInDb.FullName = staff.FullName;
+            staffInfoInDb.Age = staff.Age;
+            staffInfoInDb.Address = staff.Address;
+
+
+            _context.SaveChanges();
+
+            return RedirectToAction("IndexStaff", "Admins");
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public ActionResult DeleteStaffAccount(string id)
+        {
+            var staffInDb = _context.Users.SingleOrDefault(i => i.Id == id);
+            var staffInfoInDb = _context.Staffs.SingleOrDefault(i => i.StaffId == id);
+            if (staffInDb == null || staffInfoInDb == null)
+            {
+                return HttpNotFound();
+            }
+            _context.Users.Remove(staffInDb);
+            _context.Staffs.Remove(staffInfoInDb);
+            _context.SaveChanges();
+            return RedirectToAction("IndexStaff", "Admins");
+        }
+
+
+        [Authorize(Roles = "admin ")]
+        [HttpGet]
+        public ActionResult StaffPasswordChange()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult StaffPasswordChange(ChangePasswordViewModels viewModel, string id)
+        {
+            var userInDb = _context.Users.SingleOrDefault(i => i.Id == id);
+            if (userInDb == null)
+            {
+                return HttpNotFound();
+            }
+            var userId = User.Identity.GetUserId();
+            userId = userInDb.Id;
+
+            if (userId != null)
+            {
+                UserManager<IdentityUser> userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
+                userManager.RemovePassword(userId);
+                string newPassword = viewModel.NewPassword;
+                userManager.AddPassword(userId, newPassword);
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("IndexStaff", "Admins");
+        }
+
 
 
 
