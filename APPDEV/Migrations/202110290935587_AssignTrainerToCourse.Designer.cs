@@ -7,13 +7,13 @@ namespace APPDEV.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateStaffTable : IMigrationMetadata
+    public sealed partial class AssignTrainerToCourse : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateStaffTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AssignTrainerToCourse));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110290213537_CreateStaffTable"; }
+            get { return "202110290935587_AssignTrainerToCourse"; }
         }
         
         string IMigrationMetadata.Source

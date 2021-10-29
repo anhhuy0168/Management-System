@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\AssignTrainertoCoursesController.cs" />
     <Compile Include="Controllers\CourseCategoriesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -178,25 +179,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110281231135_CreateCategoryTable.cs" />
-    <Compile Include="Migrations\202110281231135_CreateCategoryTable.Designer.cs">
-      <DependentUpon>202110281231135_CreateCategoryTable.cs</DependentUpon>
+    <Compile Include="Migrations\202110290926405_CreateDatabase.cs" />
+    <Compile Include="Migrations\202110290926405_CreateDatabase.Designer.cs">
+      <DependentUpon>202110290926405_CreateDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110281238099_CreateCourseTable.cs" />
-    <Compile Include="Migrations\202110281238099_CreateCourseTable.Designer.cs">
-      <DependentUpon>202110281238099_CreateCourseTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110290213537_CreateStaffTable.cs" />
-    <Compile Include="Migrations\202110290213537_CreateStaffTable.Designer.cs">
-      <DependentUpon>202110290213537_CreateStaffTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110290215372_CreateTrainerTable.cs" />
-    <Compile Include="Migrations\202110290215372_CreateTrainerTable.Designer.cs">
-      <DependentUpon>202110290215372_CreateTrainerTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110290236274_createTraineeTable.cs" />
-    <Compile Include="Migrations\202110290236274_createTraineeTable.Designer.cs">
-      <DependentUpon>202110290236274_createTraineeTable.cs</DependentUpon>
+    <Compile Include="Migrations\202110290935587_AssignTrainerToCourse.cs" />
+    <Compile Include="Migrations\202110290935587_AssignTrainerToCourse.Designer.cs">
+      <DependentUpon>202110290935587_AssignTrainerToCourse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -213,6 +202,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Role.cs" />
     <Compile Include="Viewmodels\AssignTrainerCourse\AssignTrainerInCourseViewModels.cs" />
+    <Compile Include="Viewmodels\AssignTrainerCourse\AssignTrainerToCourseViewModels.cs" />
     <Compile Include="Viewmodels\ChangePasswordViewModels.cs" />
     <Compile Include="Viewmodels\CourseCategoriesViewModels.cs" />
     <Compile Include="Viewmodels\CreateStaffViewModels.cs" />
@@ -292,11 +282,11 @@
     <Content Include="Views\Staffs\IndexTrainee.cshtml" />
     <Content Include="Views\Staffs\CreateTraineeAccount.cshtml" />
     <Content Include="Views\Staffs\EditTraineeAccount.cshtml" />
+    <Content Include="Views\AssignTrainertoCourses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\AssignTrainerToCouses\" />
     <Folder Include="Views\CourseCategoriesControlle\" />
   </ItemGroup>
   <ItemGroup>
@@ -313,20 +303,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110281231135_CreateCategoryTable.resx">
-      <DependentUpon>202110281231135_CreateCategoryTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110290926405_CreateDatabase.resx">
+      <DependentUpon>202110290926405_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110281238099_CreateCourseTable.resx">
-      <DependentUpon>202110281238099_CreateCourseTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110290213537_CreateStaffTable.resx">
-      <DependentUpon>202110290213537_CreateStaffTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110290215372_CreateTrainerTable.resx">
-      <DependentUpon>202110290215372_CreateTrainerTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110290236274_createTraineeTable.resx">
-      <DependentUpon>202110290236274_createTraineeTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110290935587_AssignTrainerToCourse.resx">
+      <DependentUpon>202110290935587_AssignTrainerToCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

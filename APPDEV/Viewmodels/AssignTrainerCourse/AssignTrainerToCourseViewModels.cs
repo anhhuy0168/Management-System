@@ -6,10 +6,12 @@ using System.Web;
 
 namespace APPDEV.Viewmodels.AssignTrainerCourse
 {
-    public class AssignTrainerInCourseViewModels
+    public class AssignTrainerToCourseViewModels
     {
-        public Course Course { get; set; }
+        public int CourseId { get; set; }
+        public string TrainerId { get; set; }
 
+        public List<Course> Courses { get; set; }
         public List<Trainer> Trainers { get; set; }
     }
 }
