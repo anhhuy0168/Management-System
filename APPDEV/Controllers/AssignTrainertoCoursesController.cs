@@ -87,6 +87,7 @@ namespace APPDEV.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "AssignTrainerToCourses");
         }
+        [Authorize(Roles = "staff")]
         [HttpGet]
         public ActionResult Remove()
         {
@@ -103,6 +104,19 @@ namespace APPDEV.Controllers
             };
             return View(viewModel);
         }
-        
+        [Authorize(Roles = "staff")]
+        [HttpPost]
+        public ActionResult Remove(AssignTrainerToCourseViewModels model)
+        {
+            var getTrainer = _context.TrainersToCourses
+                .SingleOrDefault(c => c.CourseId == model.CourseId && c.TrainerId == model.TrainerId);
+            if(getTrainer == null)
+            {
+                return RedirectToAction("Index", "AssignTrainertoCourses");
+            }
+            _context.TrainersToCourses.Remove(getTrainer);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "AssignTrainertoCourses");
+        }    
     }
 }
