@@ -1,0 +1,60 @@
+﻿@model IEnumerable<APPDEV.Models.Trainee>
+@{
+    ViewBag.Title = "IndexTrainee";
+}
+@if (User.IsInRole("staff"))
+{
+    <div class="page-header">
+        <h2 style="margin-bottom: 15px">List Of Trainee Account</h2>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <div class="form-group">
+            @Html.ActionLink("Create a New Trainee", "CreateTraineeAccount", "Staffs", new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div>
+        @using (Html.BeginForm("IndexTrainee", "Staffs", FormMethod.Get))
+        {
+            <p>
+                Find by name and age: @Html.TextBox("SearchString")
+                <input type="submit" value="Search" />
+            </p>
+        }
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Trainee Email</th>
+                <th scope="col">Trainee FullName</th>
+                <th scope="col">Trainee Age</th>
+                <th scope="col">Trainee Date Of Birth</th>
+                <th scope="col">Trainee Education</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td style="vertical-align: middle" scope="row">@item.User.Email</td>
+                    <td style="vertical-align: middle">@item.FullName</td>
+                    <td style="vertical-align: middle">@item.Age</td>
+                    <td style="vertical-align: middle">@item.DateOfBirth</td>
+                    <td style="vertical-align: middle">@item.Education</td>
+                    <td>
+                        @Html.ActionLink("Edit Trainee Info", "EditTraineeAccount", "Staffs", new { id = @item.TraineeId }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete Trainee", "DeleteTraineeAccount", "Staffs", new { id = @item.TraineeId }, new { @class = "btn btn-danger" })
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+
+

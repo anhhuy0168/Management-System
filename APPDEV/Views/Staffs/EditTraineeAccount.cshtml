@@ -1,0 +1,39 @@
+﻿@model APPDEV.Models.Trainee
+@{
+    ViewBag.Title = "EditTraineeAccount";
+}
+
+<h2>Edit Trainee Account</h2>
+
+<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <div class="form-group">
+        @Html.ActionLink("Back to Trainee List ", "IndexTrainee", "Staffs", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+@using (Html.BeginForm("EditTraineeAccount", "Staffs", FormMethod.Post))
+{
+    @Html.HiddenFor(i => i.TraineeId)
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(u => u.FullName)
+        @Html.EditorFor(u => u.FullName, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Age)
+        @Html.EditorFor(a => a.Age, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.DateOfBirth)
+        @Html.EditorFor(u => u.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(u => u.Education)
+        @Html.EditorFor(u => u.Education, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+}
