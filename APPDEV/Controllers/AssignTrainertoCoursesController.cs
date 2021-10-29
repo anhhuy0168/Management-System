@@ -74,8 +74,8 @@ namespace APPDEV.Controllers
             };
 
             //check is exist
-            List<AssignTrainerToCourse> traineerstoCourses = _context.TrainersToCourses.ToList();
-            bool alreadyExist = traineerstoCourses
+            List<AssignTrainerToCourse> trainerstoCourses = _context.TrainersToCourses.ToList();
+            bool alreadyExist = trainerstoCourses
                 .Any(item => item.CourseId == model.CourseId && item.TrainerId == model.TrainerId);
             if (alreadyExist == true)
             {

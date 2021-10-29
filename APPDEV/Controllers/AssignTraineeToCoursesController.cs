@@ -48,5 +48,35 @@ namespace APPDEV.Controllers
             };
             return View(viewModel);
         }
+        [Authorize(Roles = "staff")]
+        [HttpPost]
+        public ActionResult Create(AssignTraineeToCourseViewModels model)
+        {
+            var getViewModel = new AssignTraineeToCourseViewModels
+            {
+                Courses = _context.Courses.ToList(),
+                Trainees = _context.Trainees.ToList()
+            };
+            if(!ModelState.IsValid)
+            {
+                return View(getViewModel);
+            }
+            var viewModel = new AssignTraineeToCourse
+            {
+                CourseId = model.CourseId,
+                TraineeId = model.TraineeId
+            };
+            List<AssignTraineeToCourse> traineeToCourses = _context.TraineesToCourses.ToList();
+            bool alreadyExist = traineeToCourses
+                .Any(item => item.CourseId == model.CourseId && item.TraineeId == model.TraineeId);
+            if (alreadyExist == true)
+            {
+                ModelState.AddModelError("", "Trainee is Already Exist");
+                return View(getViewModel);
+            }
+            _context.TraineesToCourses.Add(viewModel);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "AssignTraineeToCourses");
+        }
     }
 }
