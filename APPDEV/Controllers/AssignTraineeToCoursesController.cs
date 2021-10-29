@@ -78,5 +78,22 @@ namespace APPDEV.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "AssignTraineeToCourses");
         }
+        [Authorize(Roles = "staff")]
+        [HttpGet]
+        public ActionResult Remove()
+        {
+            var getTrainee = _context.TraineesToCourses.Select(t => t.Trainee)
+                .Distinct()
+                .ToList();
+            var getCourse = _context.TraineesToCourses.Select(t => t.Course)
+                .Distinct()
+                .ToList();
+            var viewModel = new AssignTraineeToCourseViewModels
+            {
+                Trainees = getTrainee,
+                Courses = getCourse
+            };
+            return View(viewModel);
+        }
     }
 }
