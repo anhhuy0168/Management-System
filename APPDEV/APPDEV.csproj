@@ -273,6 +273,8 @@
     <Content Include="Views\Admins\IndexStaff.cshtml" />
     <Content Include="Views\Admins\IndexTrainer.cshtml" />
     <Content Include="Views\Admins\CreateStaffAccount.cshtml" />
+    <Content Include="Views\Admins\EditStaffAccount.cshtml" />
+    <Content Include="Views\Admins\StaffPasswordChange.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
