@@ -11,6 +11,7 @@ namespace APPDEV.Models
         }
         public DbSet<CourseCategory> CourseCategories { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

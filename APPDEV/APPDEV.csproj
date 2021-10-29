@@ -183,6 +183,10 @@
     <Compile Include="Migrations\202110281238099_CreateCourseTable.Designer.cs">
       <DependentUpon>202110281238099_CreateCourseTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110290213537_CreateStaffTable.cs" />
+    <Compile Include="Migrations\202110290213537_CreateStaffTable.Designer.cs">
+      <DependentUpon>202110290213537_CreateStaffTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -190,6 +194,8 @@
     <Compile Include="Models\CourseCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\Trainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Viewmodels\CourseCategoriesViewModels.cs" />
@@ -259,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admins\" />
     <Folder Include="Views\CourseCategoriesControlle\" />
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110281238099_CreateCourseTable.resx">
       <DependentUpon>202110281238099_CreateCourseTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110290213537_CreateStaffTable.resx">
+      <DependentUpon>202110290213537_CreateStaffTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
