@@ -37,19 +37,20 @@
         <tbody>
             @foreach (var item in @Model)
             {
-                <tr>
-                    <td style="vertical-align: middle" scope="row">@item.User.Email</td>
-                    <td style="vertical-align: middle">@item.FullName</td>
-                    <td style="vertical-align: middle">@item.Age</td>
-                    <td style="vertical-align: middle">@item.DateOfBirth</td>
-                    <td style="vertical-align: middle">@item.Education</td>
-                    <td>
-                        @Html.ActionLink("Edit Trainee Info", "EditTraineeAccount", "Staffs", new { id = @item.TraineeId }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Delete Trainee", "DeleteTraineeAccount", "Staffs", new { id = @item.TraineeId }, new { @class = "btn btn-danger" })
+            <tr>
+                <td style="vertical-align: middle" scope="row">@item.User.Email</td>
+                <td style="vertical-align: middle">@item.FullName</td>
+                <td style="vertical-align: middle">@item.Age</td>
+               
+                <td style="vertical-align: middle"> @item.DateOfBirth.ToString("yyyy/MM/dd")</td>
+                <td style="vertical-align: middle">@item.Education</td>
+                <td>
+                    @Html.ActionLink("Edit Trainee Info", "EditTraineeAccount", "Staffs", new { id = @item.TraineeId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete Trainee", "DeleteTraineeAccount", "Staffs", new { id = @item.TraineeId }, new { @class = "btn btn-danger" })
 
 
-                    </td>
-                </tr>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
