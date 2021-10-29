@@ -95,5 +95,19 @@ namespace APPDEV.Controllers
             };
             return View(viewModel);
         }
+        [Authorize(Roles = "staff")]
+        [HttpPost]
+        public ActionResult Remove(AssignTraineeToCourseViewModels model)
+        {
+            var getTrainee = _context.TraineesToCourses
+                .SingleOrDefault(c => c.CourseId == model.CourseId && c.TraineeId == model.TraineeId);
+            if(getTrainee == null)
+            {
+                return RedirectToAction("Index", "AssignTraineeToCourses");
+            }
+            _context.TraineesToCourses.Remove(getTrainee);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "AssignTraineeToCourses");
+        }
     }
 }
