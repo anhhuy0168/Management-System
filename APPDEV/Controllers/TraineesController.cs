@@ -36,5 +36,15 @@ namespace APPDEV.Controllers
                 .ToList();
             return View(courses);
         }
+        [HttpGet]
+        public ActionResult CourseTrainees(int id)
+        {
+            var user = _context.Users.ToList();
+            var traineesCourse = _context.TraineesToCourses
+                .Where(t => t.CourseId == id)
+                .Select(t => t.Trainee)
+                .ToList();
+            return View(traineesCourse);
+        }
     }
 }

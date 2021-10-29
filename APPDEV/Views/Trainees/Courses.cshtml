@@ -22,7 +22,7 @@
                 <td>@item.Description</td>
                 <td>@item.CourseCategory.Name</td>
                 <td>
-                    @Html.ActionLink("Trainees", "CourseTrainees", "Trainee", new { id = item.CourseID }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Trainees", "CourseTrainees", "Trainees", new { id = item.CourseID }, new { @class = "btn btn-success" })
                 </td>
             </tr>
         }
