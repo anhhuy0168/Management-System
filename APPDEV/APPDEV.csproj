@@ -294,6 +294,7 @@
     <Content Include="Views\AssignTrainertoCourses\Create.cshtml" />
     <Content Include="Views\AssignTrainertoCourses\Remove.cshtml" />
     <Content Include="Views\AssignTraineeToCourses\Index.cshtml" />
+    <Content Include="Views\AssignTraineeToCourses\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

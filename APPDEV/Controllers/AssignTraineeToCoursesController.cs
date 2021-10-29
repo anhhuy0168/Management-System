@@ -37,5 +37,16 @@ namespace APPDEV.Controllers
             }
             return View(viewModel);
         }
+        [Authorize(Roles = "staff")]
+        [HttpGet]
+        public ActionResult Create()
+        {
+            var viewModel = new AssignTraineeToCourseViewModels
+            {
+                Courses = _context.Courses.ToList(),
+                Trainees = _context.Trainees.ToList()
+            };
+            return View(viewModel);
+        }
     }
 }
