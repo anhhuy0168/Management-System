@@ -194,7 +194,125 @@ namespace APPDEV.Controllers
 
             return View(trainer);
         }
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public ActionResult CreateTrainerAccount()
+        {
+            return View();
+        }
 
-       
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public async Task<ActionResult> CreateTrainerAccount(CreateTrainerViewModels viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                { UserName = viewModel.RegisterViewModels.Email, Email = viewModel.RegisterViewModels.Email };
+                var result = await UserManager.CreateAsync(user, viewModel.RegisterViewModels.Password);
+                var trainerId = user.Id;
+                var newTrainer = new Trainer()
+                {
+                    TrainerId = trainerId,
+                    FullName = viewModel.Trainers.FullName,
+                    Age = viewModel.Trainers.Age,
+                    Address = viewModel.Trainers.Address,
+                    Specialty = viewModel.Trainers.Specialty
+                };
+
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, "trainer");
+                    _context.Trainers.Add(newTrainer);
+                    _context.SaveChanges();
+                }
+                AddErrors(result);
+            }
+
+            return RedirectToAction("IndexTrainer", "Admins");
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public ActionResult EditTrainerAccount(string id)
+        {
+            var trainerInDb = _context.Trainers.SingleOrDefault(u => u.TrainerId == id);
+            if (trainerInDb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trainerInDb);
+        }
+
+        [Authorize(Roles = "admin,trainer")]
+        [HttpPost]
+        public ActionResult EditTrainerAccount(Trainer trainer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(trainer);
+            }
+            var trainerInfoInDb = _context.Trainers.SingleOrDefault(t => t.TrainerId == trainer.TrainerId);
+
+            if (trainerInfoInDb == null)
+            {
+                return HttpNotFound();
+            }
+            trainerInfoInDb.FullName = trainer.FullName;
+            trainerInfoInDb.Age = trainer.Age;
+            trainerInfoInDb.Address = trainer.Address;
+            trainerInfoInDb.Specialty = trainer.Specialty;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("IndexTrainer", "Admins");
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public ActionResult DeleteTrainerAccount(string id)
+        {
+            var trainerInDb = _context.Users.SingleOrDefault(i => i.Id == id);
+            var trainerInfoInDb = _context.Trainers.SingleOrDefault(i => i.TrainerId == id);
+            if (trainerInDb == null || trainerInfoInDb == null)
+            {
+                return HttpNotFound();
+            }
+            _context.Users.Remove(trainerInDb);
+            _context.Trainers.Remove(trainerInfoInDb);
+            _context.SaveChanges();
+            return RedirectToAction("IndexTrainer", "Admins");
+        }
+        [HttpGet]
+        public ActionResult TrainerPasswordChange()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TrainerPasswordChange(ChangePasswordViewModels viewModel, string id)
+        {
+            var userInDb = _context.Users.SingleOrDefault(i => i.Id == id);
+            if (userInDb == null)
+            {
+                return HttpNotFound();
+            }
+            var userId = User.Identity.GetUserId();
+            userId = userInDb.Id;
+
+            if (userInDb != null)
+            {
+                UserManager<IdentityUser> userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
+                userManager.RemovePassword(userId);
+                string newPassword = viewModel.NewPassword;
+                userManager.AddPassword(userId, newPassword);
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("IndexTrainer", "Admins");
+        }
     }
+
+
 }
