@@ -118,13 +118,22 @@ namespace APPDEV.Controllers
         [HttpPost]
         public ActionResult CourseEdit(CourseCategoriesViewModels model)
         {
+
+            var viewModel = new CourseCategoriesViewModels
+            {
+                Courses = model.Courses,
+                CourseCategories = _context.CourseCategories.ToList()
+            };
+
             if (!ModelState.IsValid)
             {
-                var viewModel = new CourseCategoriesViewModels
-                {
-                    Courses = model.Courses,
-                    CourseCategories = _context.CourseCategories.ToList()
-                };
+                return View(viewModel);
+            }
+            var check = _context.Courses.Any(
+               c => c.Name.Contains(model.Courses.Name));
+            if (check)
+            {
+                ModelState.AddModelError("", "Infomation Already Exists.");
                 return View(viewModel);
             }
 
