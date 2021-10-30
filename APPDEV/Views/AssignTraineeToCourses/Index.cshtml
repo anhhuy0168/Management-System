@@ -11,9 +11,6 @@
     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
 
     </div>
-    <div class="form-group">
-        @Html.ActionLink("Assign Trainee", "Create", "AssignTraineeToCourses", new { @class = "btn btn-success" })
-    </div>
     <div>
         @using (Html.BeginForm("Index", "AssignTraineeToCourses", FormMethod.Get))
         {
@@ -24,7 +21,6 @@
         }
     </div>
     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-
         @using (Html.BeginForm("Index", "AssignTraineeToCourses", FormMethod.Get))
         {
 
@@ -53,7 +49,7 @@
                         </ul>
                     </td>
                     <td>
-
+                        @Html.ActionLink("Assign Trainee", "Create", "AssignTraineeToCourses", new { @class = "btn btn-success" })
                         @Html.ActionLink("Remove Trainee", "Remove", "AssignTraineeToCourses", new { @class = "btn btn-danger" })
                     </td>
                 </tr>
