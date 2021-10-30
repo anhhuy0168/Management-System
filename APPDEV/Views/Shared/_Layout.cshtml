@@ -34,9 +34,22 @@
                             <li>@Html.ActionLink("Categories", "Index", "CourseCategories")</li>
                             <li>@Html.ActionLink("Courses", "CourseIndex", "Courses")</li>
                             <li>@Html.ActionLink("Trainee", "IndexTrainee", "Staffs")</li>
-                            
+                            <li>@Html.ActionLink("Trainees To Courses", "Index", "AssignTraineetoCourses")</li>
+                            <li>@Html.ActionLink("Trainer To Courses", "Index", "AssignTrainerToCourses")</li>
                         }
-                        
+                        else if (User.IsInRole(Role.Trainer))
+                        {
+                            <li>@Html.ActionLink("My Profile", "Index", "Trainers")</li>
+                            <li>@Html.ActionLink("My Courses", "Courses", "Trainers")</li>
+
+                        }
+                        else if (User.IsInRole(Role.Trainee))
+                        {
+                            <li>@Html.ActionLink("My Profile", "Index", "Trainees")</li>
+                            <li>@Html.ActionLink("My Courses", "Courses", "Trainees")</li>
+
+                        }
+
                     }
 
                 </ul>

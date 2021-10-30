@@ -1,0 +1,97 @@
+﻿@model IEnumerable<APPDEV.Viewmodels.AssignTraineeCourse.AssignTraineeInCourseViewModels>
+@{
+    ViewBag.Title = "Trainee In Courses";
+}
+@if (User.IsInRole("staff"))
+{
+    <div class="page-header">
+        <h2 style="margin-bottom: 15px">Trainees In Courses</h2>
+
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+
+    </div>
+    <div class="form-group">
+        @Html.ActionLink("Assign Trainee", "Create", "AssignTraineeToCourses", new { @class = "btn btn-success" })
+    </div>
+    <div>
+        @using (Html.BeginForm("Index", "AssignTraineeToCourses", FormMethod.Get))
+        {
+            <p>
+                Find by Course Name: @Html.TextBox("SearchString")
+                <input type="submit" value="Search" />
+            </p>
+        }
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+
+        @using (Html.BeginForm("Index", "AssignTraineeToCourses", FormMethod.Get))
+        {
+
+        }
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Course Name</th>
+                <th scope="col">Trainees</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>@item.Course.Name</td>
+                    <td>
+                        <ul>
+                            @foreach (var trainer in item.Trainees)
+                            {
+                                <li>@trainer.FullName</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Remove Trainee", "Remove", "AssignTraineeToCourses", new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+@if (User.IsInRole("trainee"))
+
+{
+    <div class="page-header">
+        <h2 style="margin-bottom: 15px">Trainees In Courses</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Course Name</th>
+                <th scope="col">Trainees</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>@item.Course.Name</td>
+                    <td>
+                        <ul>
+                            @foreach (var trainee in item.Trainees)
+                            {
+                                <li>@trainee.FullName</li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
