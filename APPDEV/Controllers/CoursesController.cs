@@ -64,7 +64,7 @@ namespace APPDEV.Controllers
             if (check)
             {
 
-                ModelState.AddModelError("", "Course Already Exists.");
+                ModelState.AddModelError("", "Course Name Already Exists.");
                 return View(viewModel);
             }
             var newCourse = new Course()
