@@ -181,17 +181,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110290926405_CreateDatabase.cs" />
-    <Compile Include="Migrations\202110290926405_CreateDatabase.Designer.cs">
-      <DependentUpon>202110290926405_CreateDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110290935587_AssignTrainerToCourse.cs" />
-    <Compile Include="Migrations\202110290935587_AssignTrainerToCourse.Designer.cs">
-      <DependentUpon>202110290935587_AssignTrainerToCourse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110291204585_AssignTraineeToCourse.cs" />
-    <Compile Include="Migrations\202110291204585_AssignTraineeToCourse.Designer.cs">
-      <DependentUpon>202110291204585_AssignTraineeToCourse.cs</DependentUpon>
+    <Compile Include="Migrations\202110300245185_CreateDatabase.cs" />
+    <Compile Include="Migrations\202110300245185_CreateDatabase.Designer.cs">
+      <DependentUpon>202110300245185_CreateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -320,14 +312,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110290926405_CreateDatabase.resx">
-      <DependentUpon>202110290926405_CreateDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110290935587_AssignTrainerToCourse.resx">
-      <DependentUpon>202110290935587_AssignTrainerToCourse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110291204585_AssignTraineeToCourse.resx">
-      <DependentUpon>202110291204585_AssignTraineeToCourse.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110300245185_CreateDatabase.resx">
+      <DependentUpon>202110300245185_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

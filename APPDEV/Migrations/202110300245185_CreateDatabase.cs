@@ -126,6 +126,19 @@ namespace APPDEV.Migrations
                 .Index(t => t.TraineeId);
             
             CreateTable(
+                "dbo.AssignTraineeToCourses",
+                c => new
+                    {
+                        TraineeId = c.String(nullable: false, maxLength: 128),
+                        CourseId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.TraineeId, t.CourseId })
+                .ForeignKey("dbo.Courses", t => t.CourseId, cascadeDelete: true)
+                .ForeignKey("dbo.Trainees", t => t.TraineeId, cascadeDelete: true)
+                .Index(t => t.TraineeId)
+                .Index(t => t.CourseId);
+            
+            CreateTable(
                 "dbo.Trainers",
                 c => new
                     {
@@ -139,11 +152,28 @@ namespace APPDEV.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.TrainerId)
                 .Index(t => t.TrainerId);
             
+            CreateTable(
+                "dbo.AssignTrainerToCourses",
+                c => new
+                    {
+                        TrainerId = c.String(nullable: false, maxLength: 128),
+                        CourseId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.TrainerId, t.CourseId })
+                .ForeignKey("dbo.Courses", t => t.CourseId, cascadeDelete: true)
+                .ForeignKey("dbo.Trainers", t => t.TrainerId, cascadeDelete: true)
+                .Index(t => t.TrainerId)
+                .Index(t => t.CourseId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AssignTrainerToCourses", "TrainerId", "dbo.Trainers");
+            DropForeignKey("dbo.AssignTrainerToCourses", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.Trainers", "TrainerId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AssignTraineeToCourses", "TraineeId", "dbo.Trainees");
+            DropForeignKey("dbo.AssignTraineeToCourses", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.Trainees", "TraineeId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Staffs", "StaffId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
@@ -151,7 +181,11 @@ namespace APPDEV.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Courses", "CategoryId", "dbo.CourseCategories");
+            DropIndex("dbo.AssignTrainerToCourses", new[] { "CourseId" });
+            DropIndex("dbo.AssignTrainerToCourses", new[] { "TrainerId" });
             DropIndex("dbo.Trainers", new[] { "TrainerId" });
+            DropIndex("dbo.AssignTraineeToCourses", new[] { "CourseId" });
+            DropIndex("dbo.AssignTraineeToCourses", new[] { "TraineeId" });
             DropIndex("dbo.Trainees", new[] { "TraineeId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -161,7 +195,9 @@ namespace APPDEV.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Courses", new[] { "CategoryId" });
+            DropTable("dbo.AssignTrainerToCourses");
             DropTable("dbo.Trainers");
+            DropTable("dbo.AssignTraineeToCourses");
             DropTable("dbo.Trainees");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
