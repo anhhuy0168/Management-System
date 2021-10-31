@@ -22,8 +22,11 @@
     <div class="form-group">
         <label>Category</label>
         @Html.DropDownListFor(m => m.Courses.CategoryId,
-       new SelectList(Model.CourseCategories, "Id", "Description", "Select Category"),
+       new SelectList(Model.CourseCategories, "Id", "Name", "Select Category"),
        new { @Class = "form-control" })
     </div>
     <button type="submit" class="btn btn-primary">Edit</button>
-}
+}<div class="form-group" style="margin-top: 45px">
+    
+    @Html.ActionLink("Back to Course List", "CourseIndex", "Courses", new { @class = "btn btn-success" })
+</div>
