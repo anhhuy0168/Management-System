@@ -46,7 +46,7 @@ namespace APPDEV.Controllers
             }
             //check category
             var check = _context.CourseCategories.Any(
-                c => c.Name.Contains(category.Name));
+                c => c.Name.Equals(category.Name));
             if (check)
             {
                 ModelState.AddModelError("", "Category Information Already Exists.");
@@ -93,7 +93,7 @@ namespace APPDEV.Controllers
             }
 
             var check = _context.CourseCategories.Any(
-                c => c.Name.Contains(category.Name));
+                c => c.Name.Equals(category.Name));
             if (check)
             {
                 ModelState.AddModelError("", "Category Already Exists.");

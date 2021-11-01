@@ -80,14 +80,7 @@ namespace APPDEV.Controllers
                     DateOfBirth = viewModel.Trainees.DateOfBirth,
                     Education = viewModel.Trainees.Education
                 };
-                var check = _context.Users.Any(
-               c => c.Email.Contains(viewModel.RegisterViewModels.Email));
-                if (check)
-                {
-
-                    ModelState.AddModelError("", "Email Already Exists.");
-                    return View(viewModel);
-                }
+                
 
                 if (result.Succeeded)
                 {
@@ -95,6 +88,11 @@ namespace APPDEV.Controllers
                     _context.Trainees.Add(newTrainee);
                     _context.SaveChanges();
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Email Already Exists.");
+                    return View(viewModel);
+                }    
                 AddErrors(result);
             }
 

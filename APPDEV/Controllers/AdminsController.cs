@@ -74,20 +74,18 @@ namespace APPDEV.Controllers
                     Age = viewModel.Staffs.Age,
                     Address = viewModel.Staffs.Address,
                 };
-                var check = _context.Users.Any(
-                c => c.Email.Contains(viewModel.RegisterViewModels.Email));
-                if (check)
-                {
-
-                    ModelState.AddModelError("", "Email Already Exists.");
-                    return View(viewModel);
-                }
+               
 
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, "staff");
                     _context.Staffs.Add(newStaff);
                     _context.SaveChanges();
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email Already Exists.");
+                    return View(viewModel);
                 }
                 AddErrors(result);
             }
@@ -226,21 +224,17 @@ namespace APPDEV.Controllers
                     Age = viewModel.Trainers.Age,
                     Address = viewModel.Trainers.Address,
                     Specialty = viewModel.Trainers.Specialty
-                };
-                var check = _context.Users.Any(
-               c => c.Email.Contains(viewModel.RegisterViewModels.Email));
-                if (check)
-                {
-
-                    ModelState.AddModelError("", "Email Already Exists.");
-                    return View(viewModel);
-                }
-
+                };              
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, "trainer");
                     _context.Trainers.Add(newTrainer);
                     _context.SaveChanges();
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email Already Exists.");
+                    return View(viewModel);
                 }
                 AddErrors(result);
             }

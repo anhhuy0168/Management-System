@@ -60,7 +60,7 @@ namespace APPDEV.Controllers
             }
             // check course
             var check = _context.Courses.Any(
-                c => c.Name.Contains(model.Courses.Name));
+                c => c.Name.Equals(model.Courses.Name));
             if (check)
             {
 
@@ -130,7 +130,7 @@ namespace APPDEV.Controllers
                 return View(viewModel);
             }
             var check = _context.Courses.Any(
-               c => c.Name.Contains(model.Courses.Name));
+               c => c.Name.Equals(model.Courses.Name));
             if (check)
             {
                 ModelState.AddModelError("", "Course Already Exists.");
