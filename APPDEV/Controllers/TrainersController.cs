@@ -37,6 +37,21 @@ namespace APPDEV.Controllers
             }
             return View(trainerInDb);
         }
-        
+        [HttpPost]
+        public ActionResult Edit(Trainer trainer)
+        {
+            var trainerInDb = _context.Trainers.SingleOrDefault(t => t.TrainerId == trainer.TrainerId);
+            if(trainerInDb == null)
+            {
+                return HttpNotFound();
+            }
+            trainerInDb.FullName = trainer.FullName;
+            trainerInDb.Age = trainer.Age;
+            trainerInDb.Address = trainer.Address;
+            trainerInDb.Specialty = trainer.Specialty;
+
+            _context.SaveChanges();
+            return RedirectToAction("index", "Trainers");
+        }
     }
 }
