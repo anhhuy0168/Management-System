@@ -53,5 +53,20 @@ namespace APPDEV.Controllers
             _context.SaveChanges();
             return RedirectToAction("index", "Trainers");
         }
+        [HttpGet]
+        public ActionResult Courses()
+        {
+            var trainerId = User.Identity.GetUserId();
+            var category = _context.CourseCategories.ToList();
+            var trainer = _context.Trainers.ToList();
+            var course = _context.Courses
+                .Include(t => t.CourseCategory)
+                .ToList();
+            var courses = _context.TrainersToCourses
+                .Where(t => t.TrainerId == trainerId)
+                .Select(t => t.Course)
+                .ToList();
+            return View(courses);
+        }
     }
 }
