@@ -27,6 +27,16 @@ namespace APPDEV.Controllers
             var trainerInDb = _context.Trainers.SingleOrDefault(t => t.TrainerId == userId);
             return View(trainerInDb);
         }
-
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            var trainerInDb = _context.Trainers.SingleOrDefault(t => t.TrainerId == id);
+            if(trainerInDb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trainerInDb);
+        }
+        
     }
 }
