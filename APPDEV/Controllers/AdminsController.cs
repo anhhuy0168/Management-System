@@ -74,6 +74,14 @@ namespace APPDEV.Controllers
                     Age = viewModel.Staffs.Age,
                     Address = viewModel.Staffs.Address,
                 };
+                var check = _context.Users.Any(
+                c => c.Email.Contains(viewModel.RegisterViewModels.Email));
+                if (check)
+                {
+
+                    ModelState.AddModelError("", "Email Already Exists.");
+                    return View(viewModel);
+                }
 
                 if (result.Succeeded)
                 {
@@ -219,6 +227,14 @@ namespace APPDEV.Controllers
                     Address = viewModel.Trainers.Address,
                     Specialty = viewModel.Trainers.Specialty
                 };
+                var check = _context.Users.Any(
+               c => c.Email.Contains(viewModel.RegisterViewModels.Email));
+                if (check)
+                {
+
+                    ModelState.AddModelError("", "Email Already Exists.");
+                    return View(viewModel);
+                }
 
                 if (result.Succeeded)
                 {

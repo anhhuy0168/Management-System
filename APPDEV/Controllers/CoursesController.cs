@@ -133,7 +133,7 @@ namespace APPDEV.Controllers
                c => c.Name.Contains(model.Courses.Name));
             if (check)
             {
-                ModelState.AddModelError("", "Infomation Already Exists.");
+                ModelState.AddModelError("", "Course Already Exists.");
                 return View(viewModel);
             }
 
