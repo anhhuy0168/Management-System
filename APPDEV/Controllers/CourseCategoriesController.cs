@@ -96,7 +96,7 @@ namespace APPDEV.Controllers
                 c => c.Name.Contains(category.Name));
             if (check)
             {
-                ModelState.AddModelError("", "Infomation Already Exists.");
+                ModelState.AddModelError("", "Category Already Exists.");
                 return View(category);
             }
 
