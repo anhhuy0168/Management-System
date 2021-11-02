@@ -12,6 +12,6 @@ namespace APPDEV.ViewModels
 
         public Trainer Trainers { get; set; }
 
-        public ApplicationUser TrainerUsers { get; set; }
+       
     }
 }

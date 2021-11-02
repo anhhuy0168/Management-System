@@ -12,6 +12,6 @@ namespace APPDEV.ViewModels
 
         public Staff Staffs { get; set; }
 
-        public ApplicationUser StaffUsers { get; set; }
+     
     }
 }

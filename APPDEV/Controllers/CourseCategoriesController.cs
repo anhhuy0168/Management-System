@@ -46,7 +46,7 @@ namespace APPDEV.Controllers
             }
             //check category
             var check = _context.CourseCategories.Any(
-                c => c.Name.Equals(category.Name));
+                c => c.Name.Equals(category.Name)); // so sánh name của category và name nhập vào 
             if (check)
             {
                 ModelState.AddModelError("", "Category Information Already Exists.");
@@ -55,7 +55,7 @@ namespace APPDEV.Controllers
 
             var newCategory = new CourseCategory()
             {
-                Name = category.Name,
+                Name = category.Name, // name = name nhap vao
                 Description = category.Description,
             };
             _context.CourseCategories.Add(category);
