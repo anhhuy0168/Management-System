@@ -10,8 +10,8 @@ namespace APPDEV.Models
         {
         }
         public DbSet<CourseCategory> CourseCategories { get; set; }
-        public DbSet<AssignTraineeToCourse> TraineesToCourses { get; set; }
-        public DbSet<AssignTrainerToCourse> TrainersToCourses { get; set; }
+        public DbSet<TraineesToCourses> TraineesToCourses { get; set; }
+        public DbSet<TrainersToCourses> TrainersToCourses { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Trainer> Trainers { get; set; }

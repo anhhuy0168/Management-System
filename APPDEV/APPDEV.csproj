@@ -170,27 +170,24 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
-    <Compile Include="Controllers\AssignTraineeToCoursesController.cs" />
-    <Compile Include="Controllers\AssignTrainertoCoursesController.cs" />
     <Compile Include="Controllers\CourseCategoriesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffsController.cs" />
-    <Compile Include="Controllers\TraineesController.cs" />
-    <Compile Include="Controllers\TrainersController.cs" />
+    <Compile Include="Controllers\AssignTrainerCoursesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110300245185_CreateDatabase.cs" />
-    <Compile Include="Migrations\202110300245185_CreateDatabase.Designer.cs">
-      <DependentUpon>202110300245185_CreateDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202111020854377_CreateDatabse.cs" />
+    <Compile Include="Migrations\202111020854377_CreateDatabse.Designer.cs">
+      <DependentUpon>202111020854377_CreateDatabse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\AssignTraineeToCourse.cs" />
-    <Compile Include="Models\AssignTrainerToCourse.cs" />
+    <Compile Include="Models\TraineesToCourses.cs" />
+    <Compile Include="Models\TrainersToCourses.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -201,15 +198,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Role.cs" />
-    <Compile Include="Viewmodels\AssignTraineeCourse\AssignTraineeToCourseViewModels.cs" />
-    <Compile Include="Viewmodels\AssignTraineeCourse\AssignTraineeInCourseViewModels.cs" />
-    <Compile Include="Viewmodels\AssignTrainerCourse\AssignTrainerInCourseViewModels.cs" />
-    <Compile Include="Viewmodels\AssignTrainerCourse\AssignTrainerToCourseViewModels.cs" />
     <Compile Include="Viewmodels\ChangePasswordViewModels.cs" />
     <Compile Include="Viewmodels\CourseCategoriesViewModels.cs" />
     <Compile Include="Viewmodels\CreateStaffViewModels.cs" />
     <Compile Include="Viewmodels\CreateTraineeViewModels.cs" />
     <Compile Include="Viewmodels\CreateTrainerViewModels.cs" />
+    <Compile Include="Viewmodels\TraineeCourses\TraineeInCoursesViewModels.cs" />
+    <Compile Include="Viewmodels\TraineeCourses\TraineeToCoursesViewModels.cs" />
+    <Compile Include="Viewmodels\TrainerCourses\TrainersInCoursesViewModels.cs" />
+    <Compile Include="Viewmodels\TrainerCourses\TrainersToCoursesViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -283,25 +280,14 @@
     <Content Include="Views\Staffs\IndexTrainee.cshtml" />
     <Content Include="Views\Staffs\CreateTraineeAccount.cshtml" />
     <Content Include="Views\Staffs\EditTraineeAccount.cshtml" />
-    <Content Include="Views\AssignTrainertoCourses\Index.cshtml" />
-    <Content Include="Views\AssignTrainertoCourses\Create.cshtml" />
-    <Content Include="Views\AssignTrainertoCourses\Remove.cshtml" />
-    <Content Include="Views\AssignTraineeToCourses\Index.cshtml" />
-    <Content Include="Views\AssignTraineeToCourses\Create.cshtml" />
-    <Content Include="Views\AssignTraineeToCourses\Remove.cshtml" />
-    <Content Include="Views\Trainees\Index.cshtml" />
-    <Content Include="Views\Trainees\Courses.cshtml" />
-    <Content Include="Views\Trainees\CourseTrainees.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Trainers\Index.cshtml" />
-    <Content Include="Views\Trainers\Edit.cshtml" />
-    <Content Include="Views\Trainers\Courses.cshtml" />
-    <Content Include="Views\Trainers\CourseTrainees.cshtml" />
+    <Content Include="Views\AssignTrainerCourses\GetTrainers.cshtml" />
+    <Content Include="Views\AssignTrainerCourses\AddTrainer.cshtml" />
+    <Content Include="Views\AssignTrainerCourses\RemoveTrainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\CourseCategoriesControlle\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -317,8 +303,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110300245185_CreateDatabase.resx">
-      <DependentUpon>202110300245185_CreateDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111020854377_CreateDatabse.resx">
+      <DependentUpon>202111020854377_CreateDatabse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

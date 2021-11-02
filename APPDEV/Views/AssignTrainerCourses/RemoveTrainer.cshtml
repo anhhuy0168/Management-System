@@ -1,16 +1,15 @@
-﻿@model APPDEV.Viewmodels.AssignTraineeCourse.AssignTraineeToCourseViewModels
+﻿@model APPDEV.Viewmodels.TrainerCourses.TrainersToCoursesViewModels
 @{
-    ViewBag.Title = "Add Trainee";
+    ViewBag.Title = "Remove Trainer";
 }
 
 <div class="page-header">
-    <h2 style="margin-bottom: 15px">Add Trainee</h2>
+    <h2 style="margin-bottom: 15px">Remove Trainer</h2>
 </div>
 
-@using (@Html.BeginForm("Create", "AssignTraineeToCourses", FormMethod.Post))
+@using (@Html.BeginForm("RemoveTrainer", "AssignTrainerCourses", FormMethod.Post))
 {
     @Html.ValidationSummary(false, "", new { @class = "text-danger", @style = "margin-bottom:28px;" })
-
     <div class="form-group">
         <label>Course</label>
         @Html.DropDownListFor(m => m.CourseId,
@@ -20,11 +19,11 @@
     </div>
 
     <div class="form-group">
-        <label>Trainee</label>
-        @Html.DropDownListFor(m => m.TraineeId,
-       new SelectList(Model.Trainees, "TraineeId", "FullName"),
+        <label>Trainer</label>
+        @Html.DropDownListFor(m => m.TrainerId,
+       new SelectList(Model.Trainers, "Id", "FullName"),
        new { @class = "form-control" }
        )
     </div>
-    <button type="submit" class="btn btn-primary">Add Trainee</button>
+    <button type="submit" class="btn btn-primary">Remove Trainer</button>
 }

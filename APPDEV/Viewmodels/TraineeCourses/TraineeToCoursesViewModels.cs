@@ -1,15 +1,17 @@
 ﻿using APPDEV.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace APPDEV.Viewmodels.AssignTraineeCourse
+namespace APPDEV.Viewmodels.TraineeCourses
 {
-    public class AssignTraineeToCourseViewModels
+    public class TraineeToCoursesViewModels
     {
         public int CourseId { get; set; }
-        public string TraineeId { get; set; }
+        public int TraineeId { get; set; }
         public List<Course> Courses { get; set; }
 
         public List<Trainee> Trainees { get; set; }

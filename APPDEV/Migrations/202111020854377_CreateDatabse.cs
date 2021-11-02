@@ -3,7 +3,7 @@ namespace APPDEV.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDatabase : DbMigration
+    public partial class CreateDatabse : DbMigration
     {
         public override void Up()
         {
@@ -115,21 +115,23 @@ namespace APPDEV.Migrations
                 "dbo.Trainees",
                 c => new
                     {
-                        TraineeId = c.String(nullable: false, maxLength: 128),
-                        FullName = c.String(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        FullName = c.String(nullable: false, maxLength: 255),
                         Age = c.Int(nullable: false),
                         DateOfBirth = c.DateTime(nullable: false),
+                        Address = c.String(nullable: false),
                         Education = c.String(nullable: false),
+                        TraineeId = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.TraineeId)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.TraineeId)
                 .Index(t => t.TraineeId);
             
             CreateTable(
-                "dbo.AssignTraineeToCourses",
+                "dbo.TraineesToCourses",
                 c => new
                     {
-                        TraineeId = c.String(nullable: false, maxLength: 128),
+                        TraineeId = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.TraineeId, t.CourseId })
@@ -142,21 +144,22 @@ namespace APPDEV.Migrations
                 "dbo.Trainers",
                 c => new
                     {
-                        TrainerId = c.String(nullable: false, maxLength: 128),
-                        FullName = c.String(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        FullName = c.String(nullable: false, maxLength: 255),
                         Age = c.Int(nullable: false),
                         Address = c.String(nullable: false),
-                        Specialty = c.String(nullable: false),
+                        Specialty = c.String(),
+                        TrainerId = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.TrainerId)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.TrainerId)
                 .Index(t => t.TrainerId);
             
             CreateTable(
-                "dbo.AssignTrainerToCourses",
+                "dbo.TrainersToCourses",
                 c => new
                     {
-                        TrainerId = c.String(nullable: false, maxLength: 128),
+                        TrainerId = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.TrainerId, t.CourseId })
@@ -169,11 +172,11 @@ namespace APPDEV.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.AssignTrainerToCourses", "TrainerId", "dbo.Trainers");
-            DropForeignKey("dbo.AssignTrainerToCourses", "CourseId", "dbo.Courses");
+            DropForeignKey("dbo.TrainersToCourses", "TrainerId", "dbo.Trainers");
+            DropForeignKey("dbo.TrainersToCourses", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.Trainers", "TrainerId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AssignTraineeToCourses", "TraineeId", "dbo.Trainees");
-            DropForeignKey("dbo.AssignTraineeToCourses", "CourseId", "dbo.Courses");
+            DropForeignKey("dbo.TraineesToCourses", "TraineeId", "dbo.Trainees");
+            DropForeignKey("dbo.TraineesToCourses", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.Trainees", "TraineeId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Staffs", "StaffId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
@@ -181,11 +184,11 @@ namespace APPDEV.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Courses", "CategoryId", "dbo.CourseCategories");
-            DropIndex("dbo.AssignTrainerToCourses", new[] { "CourseId" });
-            DropIndex("dbo.AssignTrainerToCourses", new[] { "TrainerId" });
+            DropIndex("dbo.TrainersToCourses", new[] { "CourseId" });
+            DropIndex("dbo.TrainersToCourses", new[] { "TrainerId" });
             DropIndex("dbo.Trainers", new[] { "TrainerId" });
-            DropIndex("dbo.AssignTraineeToCourses", new[] { "CourseId" });
-            DropIndex("dbo.AssignTraineeToCourses", new[] { "TraineeId" });
+            DropIndex("dbo.TraineesToCourses", new[] { "CourseId" });
+            DropIndex("dbo.TraineesToCourses", new[] { "TraineeId" });
             DropIndex("dbo.Trainees", new[] { "TraineeId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -195,9 +198,9 @@ namespace APPDEV.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Courses", new[] { "CategoryId" });
-            DropTable("dbo.AssignTrainerToCourses");
+            DropTable("dbo.TrainersToCourses");
             DropTable("dbo.Trainers");
-            DropTable("dbo.AssignTraineeToCourses");
+            DropTable("dbo.TraineesToCourses");
             DropTable("dbo.Trainees");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

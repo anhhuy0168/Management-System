@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace APPDEV.Viewmodels.AssignTrainerCourse
+namespace APPDEV.Viewmodels.TrainerCourses
 {
-    public class AssignTrainerToCourseViewModels
+    public class TrainersToCoursesViewModels
     {
         public int CourseId { get; set; }
-        public string TrainerId { get; set; }
+        public int TrainerId { get; set; }
 
         public List<Course> Courses { get; set; }
         public List<Trainer> Trainers { get; set; }

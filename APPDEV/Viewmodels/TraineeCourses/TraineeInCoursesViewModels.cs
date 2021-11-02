@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace APPDEV.Viewmodels.AssignTraineeCourse
+namespace APPDEV.Viewmodels.TraineeCourses
 {
-    public class AssignTraineeInCourseViewModels
+    public class TraineeInCoursesViewModels
     {
         public Course Course { get; set; }
 

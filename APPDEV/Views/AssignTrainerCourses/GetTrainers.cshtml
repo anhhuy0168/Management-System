@@ -1,18 +1,21 @@
-﻿@model IEnumerable<APPDEV.Viewmodels.AssignTraineeCourse.AssignTraineeInCourseViewModels>
+﻿@model IEnumerable<APPDEV.Viewmodels.TrainerCourses.TrainersInCoursesViewModels>
 @{
-    ViewBag.Title = "Trainee In Courses";
+    ViewBag.Title = "Trainer In Courses";
 }
 @if (User.IsInRole("staff"))
 {
     <div class="page-header">
-        <h2 style="margin-bottom: 15px">Trainees In Courses</h2>
+        <h2 style="margin-bottom: 15px">Trainers In Courses</h2>
 
     </div>
     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
 
     </div>
+    <div class="form-group">
+        @Html.ActionLink("Assign Trainer", "AddTrainer", "AssignTrainerCourses", new { @class = "btn btn-success" })
+    </div>
     <div>
-        @using (Html.BeginForm("Index", "AssignTraineeToCourses", FormMethod.Get))
+        @using (Html.BeginForm("GetTrainers", "AssignTrainerCourses", FormMethod.Get))
         {
             <p>
                 Find by Course Name: @Html.TextBox("SearchString")
@@ -21,7 +24,8 @@
         }
     </div>
     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-        @using (Html.BeginForm("Index", "AssignTraineeToCourses", FormMethod.Get))
+
+        @using (Html.BeginForm("GetTrainers", "AssignTrainerCourses", FormMethod.Get))
         {
 
         }
@@ -31,7 +35,7 @@
         <thead>
             <tr>
                 <th scope="col">Course Name</th>
-                <th scope="col">Trainees</th>
+                <th scope="col">Trainers</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -42,15 +46,15 @@
                     <td>@item.Course.Name</td>
                     <td>
                         <ul>
-                            @foreach (var trainer in item.Trainees)
+                            @foreach (var trainer in item.Trainers)
                             {
                                 <li>@trainer.FullName</li>
                             }
                         </ul>
                     </td>
                     <td>
-                        @Html.ActionLink("Assign Trainee", "Create", "AssignTraineeToCourses", new { @class = "btn btn-success" })
-                        @Html.ActionLink("Remove Trainee", "Remove", "AssignTraineeToCourses", new { @class = "btn btn-danger" })
+
+                        @Html.ActionLink("Remove Trainer", "RemoveTrainer", "AssignTrainerCourses", new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
@@ -60,17 +64,17 @@
 
 
 
-@if (User.IsInRole("trainee"))
+@if (User.IsInRole("trainer"))
 
 {
     <div class="page-header">
-        <h2 style="margin-bottom: 15px">Trainees In Courses</h2>
+        <h2 style="margin-bottom: 15px">Trainers In Courses</h2>
     </div>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th scope="col">Course Name</th>
-                <th scope="col">Trainees</th>
+                <th scope="col">Trainers</th>
             </tr>
         </thead>
         <tbody>
@@ -80,9 +84,9 @@
                     <td>@item.Course.Name</td>
                     <td>
                         <ul>
-                            @foreach (var trainee in item.Trainees)
+                            @foreach (var trainer in item.Trainers)
                             {
-                                <li>@trainee.FullName</li>
+                                <li>@trainer.FullName</li>
                             }
                         </ul>
                     </td>
