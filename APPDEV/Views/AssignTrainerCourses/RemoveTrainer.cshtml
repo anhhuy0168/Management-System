@@ -21,7 +21,7 @@
     <div class="form-group">
         <label>Trainer</label>
         @Html.DropDownListFor(m => m.TrainerId,
-       new SelectList(Model.Trainers, "Id", "FullName"),
+       new SelectList(Model.Trainers, "TrainerId", "FullName"),
        new { @class = "form-control" }
        )
     </div>

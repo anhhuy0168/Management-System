@@ -11,7 +11,7 @@ namespace APPDEV.Viewmodels.TraineeCourses
     public class TraineeToCoursesViewModels
     {
         public int CourseId { get; set; }
-        public int TraineeId { get; set; }
+        public string TraineeId { get; set; }
         public List<Course> Courses { get; set; }
 
         public List<Trainee> Trainees { get; set; }

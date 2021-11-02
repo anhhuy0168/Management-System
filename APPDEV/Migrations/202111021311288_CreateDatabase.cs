@@ -3,7 +3,7 @@ namespace APPDEV.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDatabse : DbMigration
+    public partial class CreateDatabase : DbMigration
     {
         public override void Up()
         {
@@ -115,15 +115,13 @@ namespace APPDEV.Migrations
                 "dbo.Trainees",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        FullName = c.String(nullable: false, maxLength: 255),
+                        TraineeId = c.String(nullable: false, maxLength: 128),
+                        FullName = c.String(nullable: false),
                         Age = c.Int(nullable: false),
                         DateOfBirth = c.DateTime(nullable: false),
-                        Address = c.String(nullable: false),
                         Education = c.String(nullable: false),
-                        TraineeId = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.TraineeId)
                 .ForeignKey("dbo.AspNetUsers", t => t.TraineeId)
                 .Index(t => t.TraineeId);
             
@@ -131,7 +129,7 @@ namespace APPDEV.Migrations
                 "dbo.TraineesToCourses",
                 c => new
                     {
-                        TraineeId = c.Int(nullable: false),
+                        TraineeId = c.String(nullable: false, maxLength: 128),
                         CourseId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.TraineeId, t.CourseId })
@@ -144,14 +142,13 @@ namespace APPDEV.Migrations
                 "dbo.Trainers",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        FullName = c.String(nullable: false, maxLength: 255),
+                        TrainerId = c.String(nullable: false, maxLength: 128),
+                        FullName = c.String(nullable: false),
                         Age = c.Int(nullable: false),
                         Address = c.String(nullable: false),
-                        Specialty = c.String(),
-                        TrainerId = c.String(maxLength: 128),
+                        Specialty = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.TrainerId)
                 .ForeignKey("dbo.AspNetUsers", t => t.TrainerId)
                 .Index(t => t.TrainerId);
             
@@ -159,7 +156,7 @@ namespace APPDEV.Migrations
                 "dbo.TrainersToCourses",
                 c => new
                     {
-                        TrainerId = c.Int(nullable: false),
+                        TrainerId = c.String(nullable: false, maxLength: 128),
                         CourseId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.TrainerId, t.CourseId })

@@ -170,31 +170,31 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\AssignTrainerCoursesController.cs" />
     <Compile Include="Controllers\CourseCategoriesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffsController.cs" />
-    <Compile Include="Controllers\AssignTrainerCoursesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111020854377_CreateDatabse.cs" />
-    <Compile Include="Migrations\202111020854377_CreateDatabse.Designer.cs">
-      <DependentUpon>202111020854377_CreateDatabse.cs</DependentUpon>
+    <Compile Include="Migrations\202111021311288_CreateDatabase.cs" />
+    <Compile Include="Migrations\202111021311288_CreateDatabase.Designer.cs">
+      <DependentUpon>202111021311288_CreateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\TraineesToCourses.cs" />
-    <Compile Include="Models\TrainersToCourses.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Trainee.cs" />
+    <Compile Include="Models\TraineesToCourses.cs" />
     <Compile Include="Models\Trainer.cs" />
+    <Compile Include="Models\TrainersToCourses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Role.cs" />
@@ -303,8 +303,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111020854377_CreateDatabse.resx">
-      <DependentUpon>202111020854377_CreateDatabse.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111021311288_CreateDatabase.resx">
+      <DependentUpon>202111021311288_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

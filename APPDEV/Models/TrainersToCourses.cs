@@ -11,7 +11,7 @@ namespace APPDEV.Models
     {
         [Key, Column(Order = 1)]
         [ForeignKey("Trainer")]
-        public int TrainerId { get; set; }
+        public string TrainerId { get; set; }
 
         [Key, Column(Order = 2)]
         [ForeignKey("Course")]

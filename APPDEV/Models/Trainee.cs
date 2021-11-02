@@ -10,21 +10,26 @@ namespace APPDEV.Models
     public class Trainee
     {
         [Key]
-        public int Id { get; set; }
+        [ForeignKey("User")]
+        //khoa ngoai vs bang user
+        public string TraineeId { get; set; }
+
+        public ApplicationUser User { get; set; }
+
+        //for validation
         [Required]
-        [StringLength(255)]
+
         public string FullName { get; set; }
+
         [Required]
+
         public int Age { get; set; }
+
         [Required]
         public DateTime DateOfBirth { get; set; }
-        [Required]
-        public string Address { get; set; }
-        [Required]
-        public string Education { get; set; }
 
-        [ForeignKey("User")]
-        public String TraineeId { get; set; }
-        public ApplicationUser User { get; set; }
+        [Required]
+
+        public string Education { get; set; }
     }
 }
