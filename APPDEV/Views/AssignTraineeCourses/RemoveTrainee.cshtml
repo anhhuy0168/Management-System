@@ -1,0 +1,30 @@
+﻿@model APPDEV.Viewmodels.TraineeCourses.TraineeToCoursesViewModels
+@{
+    ViewBag.Title = "Remove Trainee";
+}
+
+<div class="page-header">
+    <h2 style="margin-bottom: 15px">Remove Trainee</h2>
+</div>
+
+@using (@Html.BeginForm("RemoveTrainee", "AssignTraineeCourses", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger", @style = "margin-bottom:28px;" })
+
+    <div class="form-group">
+        <label>Course</label>
+        @Html.DropDownListFor(m => m.CourseId,
+        new SelectList(Model.Courses, "CourseID", "Name"),
+        new { @class = "form-control" }
+        )
+    </div>
+
+    <div class="form-group">
+        <label>Trainee</label>
+        @Html.DropDownListFor(m => m.TraineeId,
+       new SelectList(Model.Trainees, "TraineeId", "FullName"),
+       new { @class = "form-control" }
+       )
+    </div>
+    <button type="submit" class="btn btn-primary">Remove Trainee</button>
+}
