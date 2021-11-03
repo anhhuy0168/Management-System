@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/gcd0805appdev/databases/gcd0805appdevdatabase",
+      "type": "mssql.azure",
+      "connectionId": "AzureDeployApp",
+      "secretStore": null
+    }
+  }
+}
