@@ -164,20 +164,19 @@ namespace APPDEV.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult StaffPasswordChange(ChangePasswordViewModels viewModel, string id)
         {
+
             var userInDb = _context.Users.SingleOrDefault(i => i.Id == id);
             if (userInDb == null)
             {
                 return HttpNotFound();
             }
-            var userId = User.Identity.GetUserId();
-            userId = userInDb.Id;
 
-            if (userId != null)
+            if (userInDb != null)
             {
                 UserManager<IdentityUser> userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
-                userManager.RemovePassword(userId);
+                userManager.RemovePassword(userInDb.Id);
                 string newPassword = viewModel.NewPassword;
-                userManager.AddPassword(userId, newPassword);
+                userManager.AddPassword(userInDb.Id, newPassword);
             }
             _context.SaveChanges();
 
